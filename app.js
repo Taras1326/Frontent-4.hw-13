@@ -2,19 +2,22 @@
 // Завдання 1
 
 const delay = ms => {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(ms);
-      }, ms);
-    });
-  };
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(ms);
+    }, ms);
+  });
+};
+
+const logger1 = time => console.log(`Resolved after ${time}ms`);
+
+// Виклич функції для перевірки
+delay(2000).then(logger1); // Resolved after 2000ms
+delay(1000).then(logger1); // Resolved after 1000ms
+delay(1500).then(logger1); // Resolved after 1500ms
   
-  const logger1 = time => console.log(`Resolved after ${time}ms`);
-  
-  delay(2000).then(logger1);
-  delay(1000).then(logger1);
-  delay(1500).then(logger1);
-  
+
+
   
   // Завдання 2
   
@@ -28,9 +31,7 @@ const delay = ms => {
   const toggleUserState = (allUsers, userName) => {
     return new Promise(resolve => {
       const updatedUsers = allUsers.map(user =>
-        user.name === userName
-          ? { ...user, active: !user.active }
-          : user
+        user.name === userName ? { ...user, active: !user.active } : user
       );
   
       resolve(updatedUsers);
@@ -42,6 +43,8 @@ const delay = ms => {
   toggleUserState(users, 'Mango').then(logger2);
   toggleUserState(users, 'Lux').then(logger2);
   
+
+
   
   // Завдання 3
   
